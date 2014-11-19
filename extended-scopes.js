@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('extended-scopes', [])
-.service('digest', [
+.service('extend-digest', [
     '$rootScope',
     '$exceptionHandler',
     function(root, exception) {
@@ -47,7 +47,7 @@ angular.module('extended-scopes', [])
     }
 ])
 .provider('separatedScope', ['$rootScopeProvider', function(rootProvider) {
-  this.$get = ['$injector', 'digest', function(injector, digest) {
+  this.$get = ['$injector', 'extend-digest', function(injector, digest) {
     return function() {
       var scope = injector.invoke(rootProvider.$get);
       digest.install(scope);
